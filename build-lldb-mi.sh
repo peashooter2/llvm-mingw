@@ -141,9 +141,9 @@ cd $BUILDDIR
 cmake \
     ${CMAKE_GENERATOR+-G} "$CMAKE_GENERATOR" \
     -DCMAKE_INSTALL_PREFIX="$PREFIX" \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=Debug \
     $CMAKEFLAGS \
     ..
 
 cmake --build . ${CORES:+-j${CORES}}
-cmake --install . --strip
+cmake --install .
