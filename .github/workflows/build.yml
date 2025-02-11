@@ -62,7 +62,7 @@ jobs:
           name: parameters
           path: |
             parameters.txt
-          retention-days: 7
+          retention-days: 256
 
   # Build a cross compiler for Linux, targeting Windows.
   linux:
@@ -97,7 +97,7 @@ jobs:
           name: linux-ucrt-x86_64-toolchain
           path: |
             llvm-mingw-*.tar.xz
-          retention-days: 7
+          retention-days: 256
 
   # Crosscompile the toolchain for running on Linux on a different architecture, bundle the runtime
   # libraries that were built in the 'linux' step above.
@@ -147,7 +147,7 @@ jobs:
           name: linux-ucrt-aarch64-toolchain
           path: |
             llvm-mingw-*.tar.xz
-          retention-days: 7
+          retention-days: 256
 
   # Build a cross compiler for Linux, targeting Windows, with assertions enabled.
   #
@@ -183,7 +183,7 @@ jobs:
           name: linux-asserts-toolchain
           path: |
             llvm-mingw-linux.tar.xz
-          retention-days: 7
+          retention-days: 256
 
   # Build a cross compiler for macOS, targeting Windows.
   macos:
@@ -219,7 +219,7 @@ jobs:
           name: macos-ucrt-toolchain
           path: |
             llvm-mingw-*.tar.xz
-          retention-days: 7
+          retention-days: 256
 
   # Test building the toolchain on msys2 (in the mingw64 and clang64
   # environments). The binaries built here rely on the runtime libraries from
@@ -276,7 +276,7 @@ jobs:
           name: msys2-${{matrix.sys}}-toolchain
           path: |
             llvm-mingw-*.tar.xz
-          retention-days: 7
+          retention-days: 256
 
   # Use the Linux cross compilers built in the first step to cross compile
   # llvm and make a proper standalone toolchain for Windows (for all 4
@@ -325,7 +325,7 @@ jobs:
           name: windows-${{matrix.crt}}-${{matrix.arch}}-toolchain
           path: |
             llvm-mingw-*.zip
-          retention-days: 7
+          retention-days: 256
 
   # Run llvm-mingw's tests on x86_64 and i686 with the cross-built corresponding
   # toolchains from above.
@@ -413,7 +413,7 @@ jobs:
           cd build
           cmake ../runtimes `
             -G Ninja `
-            -DCMAKE_BUILD_TYPE=Release `
+            -DCMAKE_BUILD_TYPE=Debug `
             -DPython3_EXECUTABLE="$Env:PYTHON_EXE" `
             -DLIBCXX_ENABLE_WERROR=YES `
             -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" `
