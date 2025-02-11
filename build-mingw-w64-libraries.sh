@@ -16,15 +16,15 @@
 
 set -e
 
-USE_CFLAGS="-g -O2 -mguard=cf"
+USE_CFLAGS="-g3 -O2 -mguard=cf"
 
 while [ $# -gt 0 ]; do
     case "$1" in
     --enable-cfguard)
-        USE_CFLAGS="-g -O2 -mguard=cf"
+        USE_CFLAGS="-g3 -O2 -mguard=cf"
         ;;
     --disable-cfguard)
-        USE_CFLAGS="-g -O2"
+        USE_CFLAGS="-g3 -O2"
         ;;
     *)
         PREFIX="$1"
